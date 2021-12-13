@@ -1,0 +1,54 @@
+# encoding: utf-8
+# 2021 R1
+SetScriptVersion(Version="21.1.216")
+system1 = GetSystem(Name="SYS")
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+material1 = engineeringData1.GetMaterial(Name="Aluminum 2000")
+material1.SetSuppression(Suppressed=True)
+material1.SetSuppression(Suppressed=False)
+matlProp1 = material1.GetProperty(Name="Elasticity")
+matlProp1.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["90 [GPa]"]])
+Save(Overwrite=True)
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+material2 = engineeringData1.GetMaterial(Name="Structural Steel")
+material2.Delete()
+Save(Overwrite=True)
+matlProp1.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["105 [GPa]"]])
+Save(Overwrite=True)
+model1.Exit()
+Save(Overwrite=True)
+model1.Edit()
+matlProp1.SetData(
+    Variables=["Shear Modulus"],
+    Values=[["27 [GPa]"]])
+matlProp1.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["85 [GPa]"]])
+matlProp1.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["80 [GPa]"]])
+Save(Overwrite=True)
+matlProp1.SetData(
+    Variables=["Shear Modulus"],
+    Values=[["26 [GPa]"]])
+Save(Overwrite=True)
+matlProp1.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["70 [GPa]"]])
+Save(Overwrite=True)
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometry1.Exit()
+modelComponent1.Refresh()
+model1.Edit()
+model1.Exit()
+model1.Edit()
+model1.Exit()
+Save(Overwrite=True)
