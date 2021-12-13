@@ -31,7 +31,7 @@ r2 =    ( sqrt( (-m1.*k2-m1.*k2-m2.*k2-m2.*k1).^2 -4.*(k1.*k2 + k1.*k3 + k2.*k3)
         + 3.*m2.*k1 + 3.*m2.*k2 - m1.*k2 - m1.*k3)./(2.*m2.*k2) ;
     
 
-t   =   (0:0.1:10) ;            % t is time in seconds
+t   =   (0:0.05:10) ;            % t is time in seconds
 x1_loc = 0  ;                   % x1_loc is the location of x1
 x2_loc = -2.5  ;                   % x2_loc is the location of x2
 
